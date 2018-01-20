@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.videocompress.MainActivity"
+    android:orientation="vertical"
+    >
+
+
+    <Button
+        android:id="@+id/localButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="选择本地视频"
+        />
+    <Button
+        android:id="@+id/compressButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="压缩本地视频"
+        />
+
+    <TextView
+        android:id="@+id/inputText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="inputUir"
+        android:gravity="center"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        />
+
+    <TextView
+        android:id="@+id/outPutText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="outPutUir"
+        android:gravity="center"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:layout_marginTop="10dp"
+        />
+
+
+</LinearLayout>
