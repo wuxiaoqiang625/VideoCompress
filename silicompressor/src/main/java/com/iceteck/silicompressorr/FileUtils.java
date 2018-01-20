@@ -275,7 +275,7 @@ public class FileUtils {
                         return Environment.getExternalStorageDirectory() + "/" + split[1];
                     }
 
-                    // TODO handle non-primary volumes
+
                 }
                 // DownloadsProvider
                 else if (isDownloadsDocument(uri)) {
