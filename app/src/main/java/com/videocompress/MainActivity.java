@@ -156,22 +156,22 @@ public class MainActivity extends Activity implements View.OnClickListener {
     }
 
 
-private void openFile(String path) {
+private void openFile(File file) {
         try {
             Intent intent = new Intent();
             //设置intent的Action属性
             intent.setAction(Intent.ACTION_VIEW);
             if (Build.VERSION.SDK_INT>=24){
                 intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-                Uri contentUri=FileProvider.getUriForFile(this,"com.babyinhand.fileprovider",new File(path));
-                String type = getMIMEType(new File(path));
+                Uri contentUri=FileProvider.getUriForFile(this,"com.babyinhand.fileprovider",file);
+                String type = getMIMEType(file);
                 intent.setDataAndType(contentUri,type);
             }else {
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 //获取文件file的MIME类型
-                String type = getMIMEType(new File(path));
+                String type = getMIMEType(file);
                 //设置intent的data和Type属性。
-                intent.setDataAndType(/*uri*/Uri.fromFile(new File(path)), type);
+                intent.setDataAndType(/*uri*/Uri.fromFile(file), type);
             }
             //跳转
             startActivity(intent);
