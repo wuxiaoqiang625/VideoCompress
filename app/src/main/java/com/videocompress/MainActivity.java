@@ -156,20 +156,27 @@ public class MainActivity extends Activity implements View.OnClickListener {
     }
 
 
-    private void openFile(File file) {
+private void openFile(String path) {
         try {
             Intent intent = new Intent();
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             //设置intent的Action属性
             intent.setAction(Intent.ACTION_VIEW);
-            //获取文件file的MIME类型
-            String type = getMIMEType(file);
-            //设置intent的data和Type属性。
-            intent.setDataAndType(/*uri*/Uri.fromFile(file), type);
+            if (Build.VERSION.SDK_INT>=24){
+                intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                Uri contentUri=FileProvider.getUriForFile(this,"com.babyinhand.fileprovider",new File(path));
+                String type = getMIMEType(new File(path));
+                intent.setDataAndType(contentUri,type);
+            }else {
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                //获取文件file的MIME类型
+                String type = getMIMEType(new File(path));
+                //设置intent的data和Type属性。
+                intent.setDataAndType(/*uri*/Uri.fromFile(new File(path)), type);
+            }
             //跳转
             startActivity(intent);
         } catch (Exception e) {
-            Toast.makeText(MainActivity.this, "找不到文件", Toast.LENGTH_SHORT).show();
+            Toast.makeText(ActivityLocalVideoActivity.this, "不能打开视频文件", Toast.LENGTH_SHORT).show();
         }
 
     }
