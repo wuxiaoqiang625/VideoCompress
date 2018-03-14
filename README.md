@@ -11,3 +11,12 @@ Android视频压缩
 
 结语： github上的这个Wiki没怎么玩过不知道咋写。。。。。连传图和传gif都不知道咋玩。。。所以效果只有自己去测了， 而且这个项目只是做压缩的一个记录。。。。。如果有其他建议麻烦大家指正。
 
+# 错误
+Error:(56, 1) A problem occurred evaluating project ':silicompressor'.
+> Could not read script 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'.
+   > Connection timed out: connect
+# 解决方法
+在silicompressor/build.gradle删除以下两句话，然后rebulid（原因是没有梯子）
+// Place it at the end of the file
+apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
+apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/bintrayv1.gradle'
